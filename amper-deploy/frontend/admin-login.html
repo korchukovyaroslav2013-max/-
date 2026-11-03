@@ -1,0 +1,8 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Вход администратора</title>
+<style>body{font:16px system-ui,sans-serif;background:#0e1016;color:#f2f1ec;display:grid;place-items:center;min-height:100dvh;margin:0}form{background:#161923;border:1px solid #2a2f3d;border-radius:16px;padding:24px;width:min(360px,92vw);display:grid;gap:12px}input,button{font:inherit;padding:12px;border-radius:10px;border:1px solid #2a2f3d;background:#0e1016;color:inherit}button{background:#6b7cff;color:#0e1016;font-weight:600;border:0;cursor:pointer}#e{color:#ff8a8a;min-height:1.2em;font-size:14px}</style></head>
+<body><form id="f"><b>Вход администратора</b><input id="k" type="password" placeholder="Ключ администратора" autocomplete="current-password" required><button>Войти</button><div id="e"></div><a href="/" style="color:#9fb0ff;font-size:14px">← На сайт</a></form>
+<script src="/config.js"></script><script>
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();const er=document.getElementById('e');er.textContent='';
+try{const r=await fetch(String(window.AMPER_API).replace(/\/$/,'')+'/api/admin-login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:document.getElementById('k').value})});const b=await r.json();
+if(!r.ok){er.textContent=b.error||'Ошибка';return}localStorage.setItem('amper_a',b.token);location.href='/#admin'}catch(x){er.textContent='Сервер не отвечает. Если он спал, подождите минуту и повторите.'}};
+</script></body></html>

@@ -1,0 +1,9 @@
+{
+  "name": "amper-backend",
+  "version": "1.0.0",
+  "description": "Ампер: сервер (Node.js, Postgres)",
+  "main": "server.js",
+  "engines": { "node": ">=18" },
+  "scripts": { "start": "node --no-warnings server.js" },
+  "dependencies": { "pg": "^8.11.0" }
+}

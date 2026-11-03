@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: amper-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_KEY
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: NODE_VERSION
+        value: 22
